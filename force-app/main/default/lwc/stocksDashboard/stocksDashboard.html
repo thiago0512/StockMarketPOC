@@ -1,0 +1,35 @@
+<template>
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+    <template if:false={isLoading}>
+        <lightning-card title={companyName}>     
+            <div class="slds-p-around_large">
+                <canvas lwc:dom="manual" class="chart"></canvas>
+            </div>
+        </lightning-card>
+    <lightning-card title="Trending NASDAQ Stocks" icon-name="custom:custom63">
+        <template if:true={data}>
+            <lightning-datatable
+                key-field="index"
+                data={data}
+                columns={columns}
+                hide-checkbox-column="true"
+                onrowaction={handleRowAction}
+                sorted-by={sortBy}
+                sorted-direction={sortDirection}
+                onsort={doSorting}>
+            </lightning-datatable>
+        </template>
+        <template if:true={error}>
+            <div class="slds-text-color_error" role="alert">
+                {error}
+            </div>
+        </template>
+    </lightning-card>
+   
+   
+
+</template>
+    
+</template>
